@@ -1,0 +1,30 @@
+
+
+---
+// Confetti.astro
+---
+<canvas
+        id="confetti-canvas"
+        class="fixed inset-0 w-full h-full pointer-events-none z-0"
+></canvas>
+
+<script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Aquí window.confetti ya está definido
+        const canvas = document.getElementById('confetti-canvas');
+        const myConfetti = window.confetti.create(canvas, {
+            resize: true,
+            useWorker: true
+        });
+        function shoot() {
+            myConfetti({
+                particleCount: 30,
+                spread: 160,
+                ticks: 200,
+                origin: { x: Math.random(), y: Math.random() * 0.6 }
+            });
+        }
+        // Lánzalo cada 400 ms
+        setInterval(shoot, 400);
+    });
+</script>

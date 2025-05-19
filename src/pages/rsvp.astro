@@ -1,0 +1,26 @@
+---
+// src/pages/rsvp.astro
+import Layout from '../layouts/Layout.astro';
+import RSVPForm from '../components/RSVPForm.astro';
+import Confetti from "../components/Confetti.astro";
+---
+
+<Layout>
+    <Confetti />
+    <div id="neon-cursor" class="pointer-events-none fixed top-0 left-0 w-6 h-6 rounded-full z-50 bg-pink-400 blur-md opacity-80 transition-transform duration-100"></div>
+
+    <section class="animate-card-spin-entry bg-black/30 border-4 border-pink-500 rounded-2xl p-8 backdrop-blur shadow-[0_0_30px_#fb58f4]">
+        <h2 class="text-2xl font-bold text-pink-400 mb-4 text-center">🎈 Confirmar Asistencia</h2>
+        <div class="bg-gray-800/90 backdrop-blur rounded-lg p-4 shadow-md">
+            <RSVPForm />
+        </div>
+        <div class="text-center gap-4 my-6">
+            <a
+                    href="/"
+                    class="inline-block px-6 py-2 border-2 border-pink-400 text-pink-300 rounded-full font-semibold hover:bg-pink-400 hover:text-white transition"
+            >
+                ⬅️ Regresar
+            </a>
+        </div>
+    </section>
+</Layout>

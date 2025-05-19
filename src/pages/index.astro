@@ -1,0 +1,71 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Confetti from '../components/Confetti.astro';
+---
+
+<Layout>
+	<Confetti />
+	<div id="neon-cursor" class="pointer-events-none fixed top-0 left-0 w-6 h-6 rounded-full z-50 bg-pink-400 blur-md opacity-80 transition-transform duration-100"></div>
+
+	<main x-data="{ abierta: false }" class="min-h-screen flex items-center justify-center bg-gradient-to-br to-purple-300 px-6 py-16 relative overflow-hidden">
+
+		<!-- Carta cerrada -->
+		<div x-show="!abierta" class="text-center z-20">
+			<div
+				@click="abierta = true"
+				class="w-72 h-72 bg-black/30 rounded-xl border-4 border-pink-500 shadow-2xl cursor-pointer hover:scale-105 transition-transform duration-500 flex items-center justify-center"
+			>
+				<img
+					src="/images/carta-gamer.png"
+					alt="Carta Neon Gamer"
+					class="w-full h-full object-contain rounded-lg"
+				/>
+			</div>
+			<p class="mt-4 text-pink-200 text-sm font-medium animate-pulse tracking-wide">Haz clic en la carta para abrir tu invitación</p>
+		</div>
+
+		<!-- Contenido de la invitación -->
+		<div x-show="abierta" class="relative max-w-xl w-full z-10 text-center text-white">
+
+			<!-- Título animado con efecto fade + desplazamiento -->
+			<h1 class="text-5xl md:text-6xl font-extrabold text-pink-400 drop-shadow-md mb-6 flex justify-center gap-2 flex-wrap">
+				<span class="inline-block animate-frag-1">¡</span>
+				<span class="inline-block animate-frag-2">Estás</span>
+				<span class="inline-block animate-frag-3">invitado!</span>
+			</h1>
+
+			<!-- Resto del contenido -->
+			<div class="animate-card-spin-entry bg-black/30 border-4 border-pink-500 rounded-2xl p-8 backdrop-blur shadow-[0_0_30px_#fb58f4]">
+
+				<p class="text-xl md:text-2xl font-semibold text-white drop-shadow-sm mb-3">
+					Hola soy <span class="text-yellow-300 font-bold">Dafne</span> y este <span class="underline underline-offset-2">miércoles 21 de mayo</span> a las <strong>5:30 p.m.</strong><br />
+					vamos a pasarla increíble en <span class="text-pink-300 font-bold">SaltyManía</span>, un lugar lleno de diversión 🎉
+				</p>
+
+				<div class="flex flex-col sm:flex-row justify-center gap-4 my-6">
+					<a href="/ubicacion" class="px-6 py-2 rounded-full border-2 border-pink-400 text-pink-200 font-semibold hover:bg-pink-400 hover:text-white transition">
+						📍 Ver ubicación
+					</a>
+					<a href="/rsvp" class="group relative inline-block px-6 py-2 border-2 border-teal-300 text-teal-200 font-semibold rounded-full overflow-hidden transition-all duration-300 hover:bg-teal-300 hover:text-black">
+						<span class="absolute inset-0 bg-teal-300 opacity-0 group-hover:opacity-10 transition"></span>
+						✅ Confirmar asistencia
+					</a>
+				</div>
+
+				<p class="text-md text-white/90 mt-6">
+					Después de la diversión, los espero en mi casita para compartir una rica cenita en familia 🍽️
+				</p>
+
+				<div class="flex flex-col sm:flex-row justify-center gap-4 my-6">
+					<a href="/direccion" class="px-6 py-2 rounded-full border-2 border-pink-400 text-pink-200 font-semibold hover:bg-pink-400 hover:text-white transition">
+						📍 Mi casita
+					</a>
+				</div>
+
+				<p class="mt-4 text-white font-semibold text-lg">¡Te espero con mucha alegría! 🥰</p>
+			</div>
+		</div>
+
+
+	</main>
+</Layout>

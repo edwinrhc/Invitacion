@@ -1,0 +1,42 @@
+---
+// src/components/MapUser.astro
+---
+<div client:load class="w-full h-64 rounded-lg shadow-lg" id="user-map"></div>
+
+<script is:inline>
+    import L from 'leaflet';
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const map = L.map('user-map');
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution:
+                '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        function initMap(lat, lon) {
+            map.setView([lat, lon], 16);
+            L.marker([lat, lon])
+                .addTo(map)
+                .bindPopup('Tu ubicación')
+                .openPopup();
+        }
+
+        // Pide la ubicación al navegador
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                pos => {
+                    initMap(pos.coords.latitude, pos.coords.longitude);
+                },
+                err => {
+                    console.warn('Geolocalización denegada o falló:', err.message);
+                    // Punto por defecto
+                    initMap(-12.203248, -76.935493);
+                },
+                { enableHighAccuracy: true, timeout: 5000 }
+            );
+        } else {
+            // Si no soporta geolocalización
+            initMap(-12.203248, -76.935493);
+        }
+    });
+</script>

@@ -1,0 +1,27 @@
+---
+// src/components/RSVPForm.astro
+const actionUrl = 'https://formspree.io/f/xpwdbvvb'; // pon tu URL real
+---
+<div id="neon-cursor" class="pointer-events-none fixed top-0 left-0 w-6 h-6 rounded-full z-50 bg-pink-400 blur-md opacity-80 transition-transform duration-100"></div>
+
+<form action={actionUrl} method="POST" class="w-full max-w-md bg-gray-800 p-6 rounded-lg shadow-md space-y-4">
+    <label class="block">
+        <span class="text-gray-200">Nombre</span>
+        <input type="text" name="name" required class="mt-1 block w-full rounded-md bg-gray-700 border-transparent focus:border-gray-500 focus:bg-gray-600 focus:ring-0 text-white" />
+    </label>
+    <label class="block">
+        <span class="text-gray-200">¿Asistirás?</span>
+        <select name="attendance" required class="mt-1 block w-full rounded-md bg-gray-700 border-transparent focus:border-gray-500 focus:bg-gray-600 focus:ring-0 text-white">
+            <option value="">Selecciona…</option>
+            <option value="sí">Sí</option>
+            <option value="no">No</option>
+        </select>
+    </label>
+    <label class="block">
+        <span class="text-gray-200">Comentarios</span>
+        <textarea name="comments" rows="3" class="mt-1 block w-full rounded-md bg-gray-700 border-transparent focus:border-gray-500 focus:bg-gray-600 focus:ring-0 text-white"></textarea>
+    </label>
+    <button type="submit" class="w-full py-2 font-semibold rounded-lg bg-pink-500 hover:bg-pink-600 transition">
+        Confirmar
+    </button>
+</form>

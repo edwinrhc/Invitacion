@@ -1,0 +1,32 @@
+---
+// src/components/Ubicacion.astro
+const googleMapEmbed = `
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1159.313042953964!2d-76.94613190406561!3d-12.217866910389008!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2spe!4v1747601704307!5m2!1ses!2spe"
+    width="100%"
+    height="250"
+    style="border:0; border-radius:0.5rem;"
+    allowfullscreen=""
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+`;
+---
+<div id="neon-cursor" class="pointer-events-none fixed top-0 left-0 w-6 h-6 rounded-full z-50 bg-pink-400 blur-md opacity-80 transition-transform duration-100"></div>
+
+<section class="animate-card-spin-entry bg-black/30 border-4 border-pink-500 rounded-2xl p-8 backdrop-blur shadow-[0_0_30px_#fb58f4]">
+    <h2 class="text-2xl font-bold text-pink-400 mb-4 text-center">🎉 Casita</h2>
+    <div class="text-center mb-4">
+        <p class="text-sm text-gray-200">Sector 2, Grupo 25A, Manzana J, Lote 15</p>
+    </div>
+    <div class="rounded-lg overflow-hidden shadow" set:html={googleMapEmbed}></div>
+    <!-- Botón para volver al inicio -->
+    <div class="text-center gap-4 my-6">
+        <a
+                href="/"
+                class="inline-block px-6 py-2 border-2 border-pink-400 text-pink-300 rounded-full font-semibold hover:bg-pink-400 hover:text-white transition"
+        >
+            ⬅️ Regresar
+        </a>
+    </div>
+</section>
